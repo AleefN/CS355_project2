@@ -1,0 +1,128 @@
+<!-- Page for square app -->
+<!DOCTYPE html>
+<head>
+  <title>HoverFun</title>
+  <style>
+    body{
+      background-color: black;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      overflow: hidden;
+    }
+    .container{
+      display: flex;
+      align-items:center;
+      justify-content:center;
+      flex-wrap: wrap;
+      max-width: 400px;
+    }
+    .square{
+      background-color: white;
+      box-shadow: 0 0 2px #000;
+      height: 16px;
+      width: 16px;
+      margin: 2px;
+      transition: 2s ease;
+    }
+    .square:hover{
+      transition-duration: 0s;
+    }
+    nav{
+      display: flex;
+      flex-direction:row;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+    .centertext {
+      margin: 3%;
+      margin-top: 12%;
+      color: #29aae2;
+      display: inline-block;
+    }
+  </style>
+</head>
+<html>
+    <nav> 
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+
+        <li>
+          <a href="/carousel">Drawing App</a>
+        </li>
+
+        <li>
+          <a href="/hover">Hover</a>
+        </li>
+
+        <li>
+          <a href="/supermarket">Supermarket</a>
+        </li>
+
+        <li>
+          <a href="/feedback">Feedback</a>
+        </li>
+        
+      </ul>
+    </nav>
+<body>
+    <div class="container" id="container">
+    </div>
+    <script>
+      const container = document.getElementById('container')
+      const colors = ['#CEF4F8', '#D1CCEB', '#FED3D9', '#FDF0D7', '#C5EBD5']
+      const SQUARES = 500
+
+      for(let i = 0; i < SQUARES; i++) {
+          const square = document.createElement('div')
+          square.classList.add('square')
+      
+          square.addEventListener('mouseover', () => setColor(square))
+      
+          square.addEventListener('mouseout', () => removeColor(square))
+      
+          container.appendChild(square)
+      }
+
+      function setColor(element) {
+         const color = getRandomColor()
+         element.style.background = color
+         element.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`
+      }
+  
+      function removeColor(element) {
+         element.style.background = '#FFF'
+         element.style.boxShadow = '0 0 2px #000'
+      }
+  
+      function getRandomColor() {
+          return colors[Math.floor(Math.random() * colors.length)]
+      }
+    </script>
+</body>
+</html>

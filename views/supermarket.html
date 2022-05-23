@@ -1,0 +1,160 @@
+<!-- Page for supermarket app -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <style>
+      body{
+        background-color:#00FFFF;
+        margin: 3px;
+        padding: 10px;
+        height: 30% ;
+      }
+      
+      h1{
+        color: black;
+        width: 50%;
+      }
+      h3{
+        color: rgb(241, 141, 75);
+        width: 50%;
+        font-size: 25px;
+      
+      }
+      p{
+        color: rgb(238, 238, 238);
+        font-size: 20px;
+      }
+      button{
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+      
+      
+      td, th {
+        border: 1px solid #dfeb40;
+        text-align: center;
+        padding: 8px;
+        color: aliceblue;
+      }
+      
+      #two{
+        background-color: orangered; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+      label{
+        color:orange;
+        font-size: 19px;
+      }
+         nav{
+      display: flex;
+      flex-direction:row;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+    </style>
+  </head>
+  <body>
+    <nav> 
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+
+        <li>
+          <a href="/carousel">Drawing App</a>
+        </li>
+
+        <li>
+          <a href="/hover">Hover</a>
+        </li>
+
+        <li>
+          <a href="/supermarket">Supermarket</a>
+        </li>
+
+        <li>
+          <a href="/feedback">Feedback</a>
+        </li>
+        
+      </ul>
+    </nav>
+    <center>
+      <h1> Welcome To Leaf Veguitry Market! </h1>
+      <h3> SALE! SALE! All items are selling for a dollar! </h3>
+      <label for="Item" >Item:</label><br>
+      <input type="text" id="item" name="item"><br><br>
+      <label for="Quantity">Quantity:</label><br>
+      <input type="number" id="Quantity" name="Quantity"><br><br>
+      <button type="submit" value="Submit" onclick="addarr()"> Add to cart</button>
+      <button type="submit" value="Submit" onclick="totals()" id="two"> Checkout Cart</button>
+      <br> <br> <br>
+      <table id="table">
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+        </tr>
+      </table>
+      <p id="total"></p>
+    </center>
+    <script>
+      var items = [];
+      var quantity= [];
+      var total= 0;
+      var x = document.getElementById("table");
+      x.style.display = "none";
+      function addarr(){
+        x.style.display = "inline";
+        items.push(document.getElementById('item').value)
+        quantity.push(document.getElementById('Quantity').value)
+        var table = document.getElementById("table");
+        var row = table.insertRow(-1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = document.getElementById('item').value;
+        cell2.innerHTML = document.getElementById('Quantity').value;
+      }
+      function totals(){
+        for (i = 0; i < quantity.length; i++) {
+        total += parseInt(quantity[i]);
+      }
+        document.getElementById('total').innerHTML= "The total of your cart items cost "+ total + " dollars." +"Thanks for shopping with us!";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!-- Main Page -->
+<!DOCTYPE html>
+<head >
+   <title>Playyard</title>
+  <style>
+    body{
+      background-color: #00FFFF;
+      font-family: 'Roboto', sans-serif;
+    }
+    h1, h2{
+      display: flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      overflow: hidden;
+      margin:100px;
+    }
+    nav{
+      display: flex;
+      flex-direction:row;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+    .centertext {
+      margin: 3%;
+      margin-top: 12%;
+      color: #29aae2;
+      display: inline-block;
+    }
+  </style>
+</head>
+<html>
+<body>
+    <nav> 
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+
+        <li>
+          <a href="/carousel">Drawing App</a>
+        </li>
+
+        <li>
+          <a href="/hover">Hover</a>
+        </li>
+
+        <li>
+          <a href="/supermarket">Supermarket</a>
+        </li>
+
+        <li>
+          <a href="/feedback">Feedback</a>
+        </li>
+        
+      </ul>
+    </nav>
+    <div id="centertext">
+      <h1 id="text"> Starter....</h1>
+      <h2> A place to play the funnest games on the internet!</h2>
+    </div>
+    <script>
+      const textElement= document.getElementById('text');
+      const text="WELCOME TO PLAYYARD";
+      let index=1;
+      writeText()
+      function writeText(){
+        textElement.innerText = text.slice(0,index);
+        index++;
+
+        if(index> text.length){
+          index=1;
+        }
+        setTimeout(writeText, 150)
+        
+      }
+    </script>
+</body>
+</html>
